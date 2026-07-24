@@ -1,0 +1,22 @@
+# Environments
+venv/
+venv311/
+env/
+ENV/
+.venv/
+
+# Python cache & build
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Data & Results output (CSV, log, images)
+data/*.csv
+results/
+*.log

@@ -1,0 +1,7 @@
+ccxt
+backtrader
+pandas
+numpy
+scikit-learn
+statsmodels
+matplotlib
