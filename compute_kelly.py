@@ -58,7 +58,7 @@ def compute_kelly_and_vol_for_pairs(data_dir='data', res_dir='results', test_day
         else:
             raw_kelly = 0.0
             
-        kelly = max(0.0, raw_kelly)
+        kelly = min(max(0.0, raw_kelly), 1.0)
         kelly *= 0.25
         
         haircut = min(1.0, num_trades / 30.0)

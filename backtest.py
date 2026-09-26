@@ -354,9 +354,14 @@ if __name__ == "__main__":
     parser.add_argument('--datadir', type=str, default='data', help='Data directory')
     parser.add_argument('--resdir', type=str, default='results', help='Results directory')
     parser.add_argument('--borrow_rate', type=float, default=0.0, help='Daily margin borrow rate on shorts (e.g. 0.0 for spot with no fees)')
-    
+    parser.add_argument('--test_days', type=int, default=180, help='Number of days for Out-of-Sample testing')
+
     args = parser.parse_args()
     if args.portfolio:
-        run_portfolio_backtest('results/selected_pairs_with_kelly.csv', args.datadir, args.resdir, borrow_rate=args.borrow_rate, split_date='2025-07-25')
+        df_combined = pd.read_csv(os.path.join(args.datadir, "combined_close.csv"), index_col=0, parse_dates=True)
+        split_idx = max(1, len(df_combined) - args.test_days)
+        split_date = df_combined.index[split_idx]
+        print(f"Portfolio OOS trading starts {split_date.date()} (OOS Window: {args.test_days} days)")
+        run_portfolio_backtest('results/selected_pairs_with_kelly.csv', args.datadir, args.resdir, borrow_rate=args.borrow_rate, split_date=split_date)
     else:
         run_all_backtests(args.pairs, args.datadir, args.resdir, args.borrow_rate)

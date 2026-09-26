@@ -19,4 +19,10 @@ __pycache__/
 # Data & Results output (CSV, log, images)
 data/*.csv
 results/
+results_*/
+data_frozen_*/
 *.log
+
+# Local working notes and scratch
+spec_decisions.md
+scratch_*.py

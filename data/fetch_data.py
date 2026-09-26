@@ -41,8 +41,6 @@ def fetch_historical_data(exchange_id='binance', symbols=None, timeframe='1d', d
         
         while True:
             try:
-        while True:
-            try:
                 ohlcv = exchange.fetch_ohlcv(symbol, timeframe, since=current_since, limit=1000)
                 if not ohlcv:
                     break
@@ -86,6 +84,21 @@ def fetch_historical_data(exchange_id='binance', symbols=None, timeframe='1d', d
         combined_csv_path = os.path.join(output_dir, "combined_close.csv")
         combined_df.to_csv(combined_csv_path)
         print(f"Saved combined closing prices to {combined_csv_path} (shape: {combined_df.shape})")
+        
+        import json
+        from datetime import datetime
+        metadata = {
+            "fetched_at": datetime.now().isoformat(),
+            "exchange": exchange_id,
+            "days_requested": days,
+            "actual_start_date": str(combined_df.index.min()),
+            "actual_end_date": str(combined_df.index.max()),
+            "symbols_fetched": list(combined_df.columns),
+            "symbols_failed": [s for s in symbols if s not in combined_df.columns],
+        }
+        with open(os.path.join(output_dir, "fetch_metadata.json"), "w") as f:
+            json.dump(metadata, f, indent=2)
+            
         return combined_df
     else:
         print("No data was fetched successfully.")

@@ -20,7 +20,6 @@ def main():
     parser.add_argument('--n_components', type=int, default=3, help='PCA components')
     parser.add_argument('--eps', type=float, default=1.0, help='DBSCAN epsilon parameter')
     parser.add_argument('--min_samples', type=int, default=2, help='DBSCAN min_samples parameter')
-    parser.add_argument('--coint_p', type=float, default=0.05, help='Max p-value for cointegration')
     parser.add_argument('--hurst', type=float, default=0.5, help='Max Hurst exponent')
     parser.add_argument('--max_hl', type=int, default=100, help='Max half-life in days')
     parser.add_argument('--resdir', type=str, default='results', help='Results folder')
@@ -60,7 +59,6 @@ def main():
             n_components=args.n_components,
             eps=args.eps,
             min_samples=args.min_samples,
-            coint_p=args.coint_p,
             hurst_h=args.hurst,
             max_hl=args.max_hl,
             outdir=args.resdir,
