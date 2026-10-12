@@ -1,0 +1,15 @@
+{
+  "name": "m15_anchor",
+  "walkforward": {
+    "data_dir": "data/kucoinf_15m",
+    "formation_days": 60,
+    "trading_days": 7,
+    "holdout_start": "2026-07-01",
+    "end": "2026-10-11"
+  },
+  "strategy": {
+    "stop_z": 3.5,
+    "time_stop_windows": 3,
+    "anchor_exits": true
+  }
+}

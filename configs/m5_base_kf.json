@@ -1,0 +1,17 @@
+{
+  "name": "m5_base_kf",
+  "walkforward": {
+    "data_dir": "data/kucoinf_5m",
+    "formation_days": 60,
+    "trading_days": 7,
+    "holdout_start": "2026-07-01",
+    "end": "2026-10-11"
+  },
+  "kalman": {
+    "separate_q": true,
+    "adaptive_r": true
+  },
+  "strategy": {
+    "max_funding_carry_bps": 5.0
+  }
+}

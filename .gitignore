@@ -1,0 +1,30 @@
+# Environments
+venv/
+venv311/
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Market data, re-created with python -m kalboy fetch
+data/
+
+# Run outputs, paper-trading state and logs, all re-created by running the code.
+# The report's tables are committed in docs/.
+results/
+paper/
+logs/
+*.log
+cache/
+
+# Local notes and the pre-reorganization archive
+archive/
+spec_decisions.md
+configs/*.md
